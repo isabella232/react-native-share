@@ -526,7 +526,7 @@ static sharePDFWithAndroid(fileUrl, type) {
     ```xml
     <application>
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
             android:grantUriPermissions="true"
             android:exported="false">

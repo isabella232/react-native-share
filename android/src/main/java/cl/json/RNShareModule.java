@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
 
 import com.facebook.react.bridge.ActivityEventListener;
 import com.facebook.react.bridge.ReactApplicationContext;
@@ -112,7 +112,7 @@ public class RNShareModule extends ReactContextBaseJavaModule implements Activit
         return "RNShare";
     }
 
-    @javax.annotation.Nullable
+    @javax.annotation.NonNull
     @Override
     public Map<String, Object> getConstants() {
         Map<String, Object> constants = new HashMap<>();
@@ -123,7 +123,7 @@ public class RNShareModule extends ReactContextBaseJavaModule implements Activit
     }
 
     @ReactMethod
-    public void open(ReadableMap options, @Nullable Callback failureCallback, @Nullable Callback successCallback) {
+    public void open(ReadableMap options, @NonNull Callback failureCallback, @NonNull Callback successCallback) {
         TargetChosenReceiver.registerCallbacks(successCallback, failureCallback);
         try {
             GenericShare share = new GenericShare(this.reactContext);
@@ -140,7 +140,7 @@ public class RNShareModule extends ReactContextBaseJavaModule implements Activit
     }
 
     @ReactMethod
-    public void shareSingle(ReadableMap options, @Nullable Callback failureCallback, @Nullable Callback successCallback) {
+    public void shareSingle(ReadableMap options, @NonNull Callback failureCallback, @NonNull Callback successCallback) {
         System.out.println("SHARE SINGLE METHOD");
         TargetChosenReceiver.registerCallbacks(successCallback, failureCallback);
         if (ShareIntent.hasValidKey("social", options)) {
@@ -166,7 +166,7 @@ public class RNShareModule extends ReactContextBaseJavaModule implements Activit
     }
 
     @ReactMethod
-    public void isPackageInstalled(String packagename, @Nullable Callback failureCallback, @Nullable Callback successCallback) {
+    public void isPackageInstalled(String packagename, @NonNull Callback failureCallback, @NonNull Callback successCallback) {
         try {
             boolean res = ShareIntent.isPackageInstalled(packagename, this.reactContext);
             successCallback.invoke(res);
@@ -177,7 +177,7 @@ public class RNShareModule extends ReactContextBaseJavaModule implements Activit
     }
 
     @ReactMethod
-    public void isBase64File(String url, @Nullable Callback failureCallback, @Nullable Callback successCallback) {
+    public void isBase64File(String url, @NonNull Callback failureCallback, @NonNull Callback successCallback) {
         try {
             Uri uri = Uri.parse(url);
             String scheme = uri.getScheme();
