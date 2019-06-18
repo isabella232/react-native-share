@@ -112,6 +112,7 @@ public class RNShareModule extends ReactContextBaseJavaModule implements Activit
         return "RNShare";
     }
 
+    @NonNull
     @Override
     public Map<String, Object> getConstants() {
         Map<String, Object> constants = new HashMap<>();
